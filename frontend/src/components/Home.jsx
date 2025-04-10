@@ -6,7 +6,7 @@ export default function Home() {
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/quotes")
+    fetch("http://localhost:5000/api/quotes")
       .then((res) => res.json())
       .then((data) => setQuotes(data.quotes))
       .catch((err) =>

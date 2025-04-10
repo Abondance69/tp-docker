@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: abondance69/tpbackendcompose:v1.0
+    container_name: backend-container
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    networks:
+      - mynetwork
+
+  frontend:
+    build:
+      context: ./frontend
+    image: abondance69/tpfrontendcompose:v1.0
+    container_name: frontend-container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://backend:5000
+    restart: unless-stopped
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
