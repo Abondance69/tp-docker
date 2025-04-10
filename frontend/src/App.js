@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import Form from "./components/Form";
+import Home from "./page/Home";
 import Header from "./components/Header";
+import Quotes from "./page/Quotes";
 
 export default function App() {
   return (
@@ -10,7 +10,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route element={<Home />} path="/"></Route>
-        <Route element={<Form />} path="/create"></Route>
+        <Route element={<Quotes />} path="/create"></Route>
       </Routes>
     </BrowserRouter>
   );

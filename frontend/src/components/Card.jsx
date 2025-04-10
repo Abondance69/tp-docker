@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Quotes({ quote }) {
+export default function Card({ quote }) {
   return (
     <div className="px-3 border border-gray-400 rounded-md my-2 py-2">
       <p className="text-lg italic text-gray-800">"{quote.content}"</p>

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Quotes from "./Card";
+import QuoteServices from "../services/QuoteServices";
+import Card from "../components/Card";
 
 export default function Home() {
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/quotes")
-      .then((res) => res.json())
-      .then((data) => setQuotes(data.quotes))
+    const quoteServices = new QuoteServices();
+
+    quoteServices
+      .getAllQuotes()
+      .then((data) => setQuotes(data))
       .catch((err) =>
         console.error("Erreur lors du fetch des citations :", err)
       );
@@ -17,7 +20,7 @@ export default function Home() {
   return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl">Mes citations ({quotes.length})</h2>
+        <h2 className="text-xl">Citation du jour (aléatoire)</h2>
 
         <Link
           to="/create"
@@ -27,9 +30,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {quotes.map((quote) => (
-        <Quotes key={quote.id} quote={quote} />
-      ))}
+      <Card quote={quotes} />
     </div>
   );
 }
