@@ -17,3 +17,13 @@ Le frontend est une application React qui permet :
 Dockerfile pour chaque service (backend et frontend).
 
 docker-compose.yml pour orchestrer les deux services.
+
+### Lancer le projet
+
+```bash
+docker-compose build
+```
+
+```bash
+docker-compose up -d
+```
